@@ -111,7 +111,7 @@ class Common(Configuration):
 
     # DATABASE CONFIGURATION
     # See: https://docs.djangoproject.com/en/dev/ref/settings/#databases
-    DATABASES = values.DatabaseURLValue('postgres://vamshedhar:sql_sre!@localhost/sms-channel-api')
+    DATABASES = values.DatabaseURLValue('postgres://smschannel:sql_sre!@localhost/sms-channel-api')
     # END DATABASE CONFIGURATION
 
     # CACHING
