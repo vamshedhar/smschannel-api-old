@@ -30,4 +30,6 @@ urlpatterns = patterns('',
 
     # Your stuff: custom urls go here
 
+    url(r'^api-auth/', 'rest_framework_jwt.views.obtain_jwt_token'),
+
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

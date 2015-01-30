@@ -35,6 +35,9 @@ class Common(Configuration):
 
         # Admin
         'django.contrib.admin',
+
+        #Additional Apps
+        'rest_framework',
     )
     THIRD_PARTY_APPS = (
         'crispy_forms',  # Form layouts
@@ -111,7 +114,7 @@ class Common(Configuration):
 
     # DATABASE CONFIGURATION
     # See: https://docs.djangoproject.com/en/dev/ref/settings/#databases
-    DATABASES = values.DatabaseURLValue('postgres://smschannel:sql_sre!@localhost/sms-channel-api')
+    DATABASES = values.DatabaseURLValue('postgres://smschannel:sql_sre!@localhost/sms_channel_api')
     # END DATABASE CONFIGURATION
 
     # CACHING
@@ -227,6 +230,17 @@ class Common(Configuration):
     LOGIN_REDIRECT_URL = 'users:redirect'
     LOGIN_URL = 'account_login'
     # END Custom user app defaults
+
+    REST_FRAMEWORK = {
+        'DEFAULT_PERMISSION_CLASSES': (
+            'rest_framework.permissions.IsAuthenticated',
+        ),
+        'DEFAULT_AUTHENTICATION_CLASSES': (
+            'rest_framework.authentication.SessionAuthentication',
+            'rest_framework.authentication.BasicAuthentication',
+            'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+        ),
+    }
 
     # SLUGLIFIER
     AUTOSLUG_SLUGIFY_FUNCTION = 'slugify.slugify'
